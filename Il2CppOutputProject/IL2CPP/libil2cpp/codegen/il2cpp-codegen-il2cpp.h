@@ -35,8 +35,8 @@ NORETURN void il2cpp_codegen_raise_exception(il2cpp_hresult_t hresult, bool defa
 #define IL2CPP_PUSH_ACTIVE_EXCEPTION(Exception) \
     __active_exceptions.push(Exception)
 
-#define IL2CPP_POP_ACTIVE_EXCEPTION() \
-    __active_exceptions.pop()
+#define IL2CPP_POP_ACTIVE_EXCEPTION(ExcType) \
+    (ExcType)__active_exceptions.pop()
 
 #define IL2CPP_GET_ACTIVE_EXCEPTION(ExcType) \
     (ExcType)__active_exceptions.top()
@@ -202,6 +202,11 @@ Exception_t* il2cpp_codegen_get_invalid_cast_exception(const char* msg);
 Exception_t* il2cpp_codegen_get_invalid_operation_exception(const char* msg);
 
 Exception_t* il2cpp_codegen_get_marshal_directive_exception(const char* msg);
+
+Exception_t* il2cpp_codegen_get_marshal_directive_exception(const char* msg, const RuntimeType* type);
+
+// format string will require first instance as a field and second instance as a type or this will break
+Exception_t* il2cpp_codegen_get_marshal_directive_exception(const char* msg, const RuntimeField* field, const RuntimeType* type);
 
 Exception_t* il2cpp_codegen_get_missing_method_exception(const char* msg);
 

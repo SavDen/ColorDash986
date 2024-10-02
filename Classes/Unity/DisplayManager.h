@@ -6,7 +6,7 @@
 @class UnityView;
 
 @interface DisplayConnection : NSObject
-#if !TARGET_OS_XR
+#if !PLATFORM_VISIONOS
 - (id)init:(UIScreen*)targetScreen;
 #else
 - (id)init;
@@ -24,7 +24,7 @@
 - (void)requestRenderingResolution:(CGSize)res;
 - (void)present;
 
-#if !TARGET_OS_XR
+#if !PLATFORM_VISIONOS
 @property (readonly, copy, nonatomic)   UIScreen*               screen;
 #endif
 @property (readonly, copy, nonatomic)   UIWindow*               window;
@@ -38,7 +38,7 @@
 
 
 @interface DisplayManager : NSObject
-#if !TARGET_OS_XR
+#if !PLATFORM_VISIONOS
 - (id)objectForKeyedSubscript:(id)key;
 - (BOOL)displayAvailable:(UIScreen*)targetScreen;
 - (void)updateDisplayListCacheInUnity;

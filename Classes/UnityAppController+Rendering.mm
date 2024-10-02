@@ -46,6 +46,9 @@ static bool _enableRunLoopAcceptInput = false;
 
 - (void)repaint
 {
+    if (_unityView.skipRendering)
+        return;
+
 #if UNITY_SUPPORT_ROTATION
     [self checkOrientationRequest];
 #endif
@@ -94,17 +97,22 @@ static bool _enableRunLoopAcceptInput = false;
 
 - (void)callbackFramerateChange:(int)targetFPS
 {
-#if !PLATFORM_VISIONOS
-    int maxFPS = (int)[UIScreen mainScreen].maximumFramesPerSecond;
-#else
-    // hardcode for visionOS?
-    int maxFPS = 90;
-#endif
     if (targetFPS <= 0)
         targetFPS = UnityGetTargetFPS();
-    if (targetFPS > maxFPS)
+    #if !PLATFORM_VISIONOS
+        // on tvos it is possible to start application without a screen attached
+        // alas, mainScreen is set in this case, but the values provided are bogus
+        //   and in the case of maxFPS = 0 we will end up in endless recursion
+        const int maxFPS = (int)[UIScreen mainScreen].maximumFramesPerSecond;
+    #else
+        // hardcode for visionOS?
+        const int maxFPS = 90;
+    #endif
+
+    if (maxFPS > 0 && targetFPS > maxFPS)
     {
         targetFPS = maxFPS;
+        // note that this changes FPS, resulting in UnityFramerateChangeCallback call, calling this method recursively recursively
         UnitySetTargetFPS(targetFPS);
         return;
     }

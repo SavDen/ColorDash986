@@ -305,7 +305,7 @@ typedef struct {
 #ifdef RUNTIME_IL2CPP
 	int (*get_framecount)(void *tls);
 	gboolean(*has_exception)(void *tls);
-    Il2CppSequencePoint* (*find_catch_sequence_point)(void *tls);
+    Il2CppSequencePoint* (*find_catch_sequence_point)(DebuggerTlsData *tls);
 	gboolean (*ss_update)(SingleStepReq *req, DebuggerTlsData *tls, MonoContext *ctx, Il2CppSequencePoint *sequencePoint);
 	void (*ss_start)(SingleStepReq *ss_req, DebuggerTlsData *tls, Il2CppSequencePoint *catchFrameSp);
 	Il2CppSequencePoint* (*get_current_sequence_point)(DebuggerTlsData *tls);

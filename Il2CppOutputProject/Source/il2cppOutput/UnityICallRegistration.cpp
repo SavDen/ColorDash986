@@ -164,6 +164,14 @@ void RegisterAllStrippedInternalCalls()
 
 	//End Registrations for type : Unity.Profiling.LowLevel.Unsafe.ProfilerUnsafeUtility
 
+	//Start Registrations for type : UnityEngine.Android.AndroidApp
+
+		//System.IntPtr UnityEngine.Android.AndroidApp::get_UnityPlayerRaw()
+		void Register_UnityEngine_Android_AndroidApp_get_UnityPlayerRaw();
+		Register_UnityEngine_Android_AndroidApp_get_UnityPlayerRaw();
+
+	//End Registrations for type : UnityEngine.Android.AndroidApp
+
 	//Start Registrations for type : UnityEngine.AndroidJNI
 
 		//System.Boolean UnityEngine.AndroidJNI::CallBooleanMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)
@@ -173,10 +181,6 @@ void RegisterAllStrippedInternalCalls()
 		//System.Boolean UnityEngine.AndroidJNI::CallStaticBooleanMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)
 		void Register_UnityEngine_AndroidJNI_CallStaticBooleanMethodUnsafe();
 		Register_UnityEngine_AndroidJNI_CallStaticBooleanMethodUnsafe();
-
-		//System.Boolean UnityEngine.AndroidJNI::GetBooleanField(System.IntPtr,System.IntPtr)
-		void Register_UnityEngine_AndroidJNI_GetBooleanField();
-		Register_UnityEngine_AndroidJNI_GetBooleanField();
 
 		//System.Boolean UnityEngine.AndroidJNI::GetStaticBooleanField(System.IntPtr,System.IntPtr)
 		void Register_UnityEngine_AndroidJNI_GetStaticBooleanField();
@@ -202,10 +206,6 @@ void RegisterAllStrippedInternalCalls()
 		void Register_UnityEngine_AndroidJNI_CallStaticCharMethodUnsafe();
 		Register_UnityEngine_AndroidJNI_CallStaticCharMethodUnsafe();
 
-		//System.Char UnityEngine.AndroidJNI::GetCharField(System.IntPtr,System.IntPtr)
-		void Register_UnityEngine_AndroidJNI_GetCharField();
-		Register_UnityEngine_AndroidJNI_GetCharField();
-
 		//System.Char UnityEngine.AndroidJNI::GetStaticCharField(System.IntPtr,System.IntPtr)
 		void Register_UnityEngine_AndroidJNI_GetStaticCharField();
 		Register_UnityEngine_AndroidJNI_GetStaticCharField();
@@ -222,10 +222,6 @@ void RegisterAllStrippedInternalCalls()
 		void Register_UnityEngine_AndroidJNI_CallStaticDoubleMethodUnsafe();
 		Register_UnityEngine_AndroidJNI_CallStaticDoubleMethodUnsafe();
 
-		//System.Double UnityEngine.AndroidJNI::GetDoubleField(System.IntPtr,System.IntPtr)
-		void Register_UnityEngine_AndroidJNI_GetDoubleField();
-		Register_UnityEngine_AndroidJNI_GetDoubleField();
-
 		//System.Double UnityEngine.AndroidJNI::GetStaticDoubleField(System.IntPtr,System.IntPtr)
 		void Register_UnityEngine_AndroidJNI_GetStaticDoubleField();
 		Register_UnityEngine_AndroidJNI_GetStaticDoubleField();
@@ -241,10 +237,6 @@ void RegisterAllStrippedInternalCalls()
 		//System.Int16 UnityEngine.AndroidJNI::CallStaticShortMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)
 		void Register_UnityEngine_AndroidJNI_CallStaticShortMethodUnsafe();
 		Register_UnityEngine_AndroidJNI_CallStaticShortMethodUnsafe();
-
-		//System.Int16 UnityEngine.AndroidJNI::GetShortField(System.IntPtr,System.IntPtr)
-		void Register_UnityEngine_AndroidJNI_GetShortField();
-		Register_UnityEngine_AndroidJNI_GetShortField();
 
 		//System.Int16 UnityEngine.AndroidJNI::GetStaticShortField(System.IntPtr,System.IntPtr)
 		void Register_UnityEngine_AndroidJNI_GetStaticShortField();
@@ -266,10 +258,6 @@ void RegisterAllStrippedInternalCalls()
 		void Register_UnityEngine_AndroidJNI_GetArrayLength();
 		Register_UnityEngine_AndroidJNI_GetArrayLength();
 
-		//System.Int32 UnityEngine.AndroidJNI::GetIntField(System.IntPtr,System.IntPtr)
-		void Register_UnityEngine_AndroidJNI_GetIntField();
-		Register_UnityEngine_AndroidJNI_GetIntField();
-
 		//System.Int32 UnityEngine.AndroidJNI::GetStaticIntField(System.IntPtr,System.IntPtr)
 		void Register_UnityEngine_AndroidJNI_GetStaticIntField();
 		Register_UnityEngine_AndroidJNI_GetStaticIntField();
@@ -289,10 +277,6 @@ void RegisterAllStrippedInternalCalls()
 		//System.Int64 UnityEngine.AndroidJNI::CallStaticLongMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)
 		void Register_UnityEngine_AndroidJNI_CallStaticLongMethodUnsafe();
 		Register_UnityEngine_AndroidJNI_CallStaticLongMethodUnsafe();
-
-		//System.Int64 UnityEngine.AndroidJNI::GetLongField(System.IntPtr,System.IntPtr)
-		void Register_UnityEngine_AndroidJNI_GetLongField();
-		Register_UnityEngine_AndroidJNI_GetLongField();
 
 		//System.Int64 UnityEngine.AndroidJNI::GetStaticLongField(System.IntPtr,System.IntPtr)
 		void Register_UnityEngine_AndroidJNI_GetStaticLongField();
@@ -337,10 +321,6 @@ void RegisterAllStrippedInternalCalls()
 		//System.IntPtr UnityEngine.AndroidJNI::GetObjectClass(System.IntPtr)
 		void Register_UnityEngine_AndroidJNI_GetObjectClass();
 		Register_UnityEngine_AndroidJNI_GetObjectClass();
-
-		//System.IntPtr UnityEngine.AndroidJNI::GetObjectField(System.IntPtr,System.IntPtr)
-		void Register_UnityEngine_AndroidJNI_GetObjectField();
-		Register_UnityEngine_AndroidJNI_GetObjectField();
 
 		//System.IntPtr UnityEngine.AndroidJNI::GetStaticFieldID(System.IntPtr,System.String,System.String)
 		void Register_UnityEngine_AndroidJNI_GetStaticFieldID();
@@ -430,10 +410,6 @@ void RegisterAllStrippedInternalCalls()
 		void Register_UnityEngine_AndroidJNI_CallStaticSByteMethodUnsafe();
 		Register_UnityEngine_AndroidJNI_CallStaticSByteMethodUnsafe();
 
-		//System.SByte UnityEngine.AndroidJNI::GetSByteField(System.IntPtr,System.IntPtr)
-		void Register_UnityEngine_AndroidJNI_GetSByteField();
-		Register_UnityEngine_AndroidJNI_GetSByteField();
-
 		//System.SByte UnityEngine.AndroidJNI::GetStaticSByteField(System.IntPtr,System.IntPtr)
 		void Register_UnityEngine_AndroidJNI_GetStaticSByteField();
 		Register_UnityEngine_AndroidJNI_GetStaticSByteField();
@@ -449,10 +425,6 @@ void RegisterAllStrippedInternalCalls()
 		//System.Single UnityEngine.AndroidJNI::CallStaticFloatMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)
 		void Register_UnityEngine_AndroidJNI_CallStaticFloatMethodUnsafe();
 		Register_UnityEngine_AndroidJNI_CallStaticFloatMethodUnsafe();
-
-		//System.Single UnityEngine.AndroidJNI::GetFloatField(System.IntPtr,System.IntPtr)
-		void Register_UnityEngine_AndroidJNI_GetFloatField();
-		Register_UnityEngine_AndroidJNI_GetFloatField();
 
 		//System.Single UnityEngine.AndroidJNI::GetStaticFloatField(System.IntPtr,System.IntPtr)
 		void Register_UnityEngine_AndroidJNI_GetStaticFloatField();
@@ -478,21 +450,9 @@ void RegisterAllStrippedInternalCalls()
 		void Register_UnityEngine_AndroidJNI_GetStringChars();
 		Register_UnityEngine_AndroidJNI_GetStringChars();
 
-		//System.String UnityEngine.AndroidJNI::GetStringField(System.IntPtr,System.IntPtr)
-		void Register_UnityEngine_AndroidJNI_GetStringField();
-		Register_UnityEngine_AndroidJNI_GetStringField();
-
-		//System.Void UnityEngine.AndroidJNI::CallStaticVoidMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)
-		void Register_UnityEngine_AndroidJNI_CallStaticVoidMethodUnsafe();
-		Register_UnityEngine_AndroidJNI_CallStaticVoidMethodUnsafe();
-
 		//System.Void UnityEngine.AndroidJNI::CallVoidMethodUnsafe(System.IntPtr,System.IntPtr,UnityEngine.jvalue*)
 		void Register_UnityEngine_AndroidJNI_CallVoidMethodUnsafe();
 		Register_UnityEngine_AndroidJNI_CallVoidMethodUnsafe();
-
-		//System.Void UnityEngine.AndroidJNI::DeleteGlobalRef(System.IntPtr)
-		void Register_UnityEngine_AndroidJNI_DeleteGlobalRef();
-		Register_UnityEngine_AndroidJNI_DeleteGlobalRef();
 
 		//System.Void UnityEngine.AndroidJNI::DeleteLocalRef(System.IntPtr)
 		void Register_UnityEngine_AndroidJNI_DeleteLocalRef();
@@ -506,6 +466,10 @@ void RegisterAllStrippedInternalCalls()
 		void Register_UnityEngine_AndroidJNI_ExceptionClear();
 		Register_UnityEngine_AndroidJNI_ExceptionClear();
 
+		//System.Void UnityEngine.AndroidJNI::QueueDeleteGlobalRef(System.IntPtr)
+		void Register_UnityEngine_AndroidJNI_QueueDeleteGlobalRef();
+		Register_UnityEngine_AndroidJNI_QueueDeleteGlobalRef();
+
 		//System.Void UnityEngine.AndroidJNI::SetObjectArrayElement(System.IntPtr,System.Int32,System.IntPtr)
 		void Register_UnityEngine_AndroidJNI_SetObjectArrayElement();
 		Register_UnityEngine_AndroidJNI_SetObjectArrayElement();
@@ -517,6 +481,10 @@ void RegisterAllStrippedInternalCalls()
 		//System.Boolean UnityEngine.AnimationCurve::Internal_Equals(System.IntPtr)
 		void Register_UnityEngine_AnimationCurve_Internal_Equals();
 		Register_UnityEngine_AnimationCurve_Internal_Equals();
+
+		//System.Int32 UnityEngine.AnimationCurve::GetHashCode()
+		void Register_UnityEngine_AnimationCurve_GetHashCode();
+		Register_UnityEngine_AnimationCurve_GetHashCode();
 
 		//System.IntPtr UnityEngine.AnimationCurve::Internal_Create(UnityEngine.Keyframe[])
 		void Register_UnityEngine_AnimationCurve_Internal_Create();
@@ -833,6 +801,10 @@ void RegisterAllStrippedInternalCalls()
 		//System.Void UnityEngine.CanvasGroup::set_alpha(System.Single)
 		void Register_UnityEngine_CanvasGroup_set_alpha();
 		Register_UnityEngine_CanvasGroup_set_alpha();
+
+		//System.Void UnityEngine.CanvasGroup::set_ignoreParentGroups(System.Boolean)
+		void Register_UnityEngine_CanvasGroup_set_ignoreParentGroups();
+		Register_UnityEngine_CanvasGroup_set_ignoreParentGroups();
 
 	//End Registrations for type : UnityEngine.CanvasGroup
 
@@ -2134,10 +2106,6 @@ void RegisterAllStrippedInternalCalls()
 		void Register_UnityEngine_Mesh_SetIndicesImpl();
 		Register_UnityEngine_Mesh_SetIndicesImpl();
 
-		//System.Void UnityEngine.Mesh::set_bounds_Injected(UnityEngine.Bounds&)
-		void Register_UnityEngine_Mesh_set_bounds_Injected();
-		Register_UnityEngine_Mesh_set_bounds_Injected();
-
 	//End Registrations for type : UnityEngine.Mesh
 
 	//Start Registrations for type : UnityEngine.MonoBehaviour
@@ -3354,10 +3322,6 @@ void RegisterAllStrippedInternalCalls()
 		void Register_UnityEngine_Transform_get_childCount();
 		Register_UnityEngine_Transform_get_childCount();
 
-		//System.Int32 UnityEngine.Transform::internal_getHierarchyCount()
-		void Register_UnityEngine_Transform_internal_getHierarchyCount();
-		Register_UnityEngine_Transform_internal_getHierarchyCount();
-
 		//System.Void UnityEngine.Transform::InverseTransformPoint_Injected(UnityEngine.Vector3&,UnityEngine.Vector3&)
 		void Register_UnityEngine_Transform_InverseTransformPoint_Injected();
 		Register_UnityEngine_Transform_InverseTransformPoint_Injected();
@@ -3546,7 +3510,7 @@ void RegisterAllStrippedInternalCalls()
 
 	//Start Registrations for type : UnityEngine.UIElements.UIPainter2D
 
-		//System.IntPtr UnityEngine.UIElements.UIPainter2D::Create(System.Single)
+		//System.IntPtr UnityEngine.UIElements.UIPainter2D::Create(System.Boolean)
 		void Register_UnityEngine_UIElements_UIPainter2D_Create();
 		Register_UnityEngine_UIElements_UIPainter2D_Create();
 

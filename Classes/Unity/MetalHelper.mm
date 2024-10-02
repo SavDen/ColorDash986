@@ -19,21 +19,32 @@ extern "C" void InitRenderingMTL()
 
 static MTLPixelFormat GetColorFormatForSurface(const UnityDisplaySurfaceMTL* surface)
 {
-    MTLPixelFormat colorFormat = surface->srgb ? MTLPixelFormatBGRA8Unorm_sRGB : MTLPixelFormatBGRA8Unorm;
-#if PLATFORM_IOS || PLATFORM_TVOS || PLATFORM_VISIONOS
-    if (surface->wideColor && UnityIsWideColorSupported())
-        colorFormat = surface->srgb ? MTLPixelFormatBGR10_XR_sRGB : MTLPixelFormatBGR10_XR;
-#elif PLATFORM_OSX
+    MTLPixelFormat colorFormat = MTLPixelFormatInvalid;
+
+#if PLATFORM_OSX
     if (surface->hdr)
     {
+        // 0 = 10 bit, 1 = 16bit
         if (@available(macOS 10.15, *))
-        {   // 0 = 10bit
             colorFormat = UnityHDRSurfaceDepth() == 0 ? MTLPixelFormatRGB10A2Unorm : MTLPixelFormatRGBA16Float;
-        }
     }
-    else if (surface->wideColor)
-        colorFormat = MTLPixelFormatRGBA16Float;
 #endif
+
+    if(colorFormat == MTLPixelFormatInvalid && surface->wideColor)
+    {
+        // at some point we tried using MTLPixelFormatBGR10_XR formats, but it seems that apple CoreImage have issues with that
+        //   and we are not alone here, see for example https://forums.developer.apple.com/forums/thread/66166
+        // when application goes to background the colors are changed (more white-ish?)
+        // no matter what we tried, the issue persists
+        // NOTE: the most funny thing is when we set color space to be P3 we get same whitish colors always
+        // NOTE: but this time they become normal when going to background
+        // in all, it seems that using rgba f16 is the most robust option here, so we are back to it again
+        colorFormat = MTLPixelFormatRGBA16Float;
+    }
+
+    if(colorFormat == MTLPixelFormatInvalid)
+        colorFormat = surface->srgb ? MTLPixelFormatBGRA8Unorm_sRGB : MTLPixelFormatBGRA8Unorm;
+
     return colorFormat;
 }
 
@@ -75,22 +86,28 @@ extern "C" void CreateSystemRenderingSurfaceMTL(UnityDisplaySurfaceMTL* surface)
     MetalUpdateDisplaySync();
 #endif
 
+    CGColorSpaceRef colorSpaceRef = nil;
 
 #if PLATFORM_OSX
-    CGColorSpaceRef colorSpaceRef = nil;
     if (surface->hdr)
+    {
         if (@available(macOS 11.0, *)) // 0 = 10bit
             colorSpaceRef = UnityHDRSurfaceDepth() == 0 ? CGColorSpaceCreateWithName(CFSTR("kCGColorSpaceITUR_2100_PQ")) : CGColorSpaceCreateWithName(CFSTR("kCGColorSpaceExtendedLinearITUR_2020"));
         else
             colorSpaceRef = UnityHDRSurfaceDepth() == 0 ? CGColorSpaceCreateWithName(CFSTR("kCGColorSpaceITUR_2020_PQ_EOTF")) : CGColorSpaceCreateWithName(CFSTR("kCGColorSpaceExtendedLinearITUR_2020"));
-    else if (surface->wideColor)
-        colorSpaceRef = CGColorSpaceCreateWithName(surface->srgb ? kCGColorSpaceExtendedLinearSRGB : kCGColorSpaceExtendedSRGB);
-    else
-        colorSpaceRef = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
+    }
+#endif
+
+    if(colorSpaceRef == nil)
+    {
+        if (surface->wideColor)
+            colorSpaceRef = CGColorSpaceCreateWithName(surface->srgb ? kCGColorSpaceExtendedLinearSRGB : kCGColorSpaceExtendedSRGB);
+        else
+            colorSpaceRef = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
+    }
 
     surface->layer.colorspace = colorSpaceRef;
     CGColorSpaceRelease(colorSpaceRef);
-#endif
 
     // Update the native screen resolution
     UnityUpdateDrawableSize(surface);
@@ -110,6 +127,9 @@ extern "C" void CreateSystemRenderingSurfaceMTL(UnityDisplaySurfaceMTL* surface)
     {
 #if PLATFORM_OSX
         surface->proxySwaps = 0;
+        surface->proxyReady = 0;
+        surface->calledPresentDrawable = 0;
+        surface->vsync = 1; // by default, vsync is enabled for all surfaces
 #endif
 
         for (int i = 0; i < kUnityNumOffscreenSurfaces; i++)
@@ -331,18 +351,19 @@ extern "C" void PreparePresentMTL(UnityDisplaySurfaceMTL* surface)
 
 extern "C" void PresentMTL(UnityDisplaySurfaceMTL* surface)
 {
+    //ARCHEOLOGY: we used to present using [MTLCommandBuffer presentDrawable:afterMinimumDuration:]
+    //however that was found to sometimes cause 0.5s-1s hangs when acquiring drawable after surface rebuild, or presenting hanging completely (UUM-9480)
+    //after some further investigation we found that using the more complex present logic didn't actually yield much benefit
+    //current implementation is made to align with our macOS present logic
     if (surface->drawable)
     {
-        // for some reason presentDrawable: afterMinimumDuration: is missing from simulator headers completely in xcode 12
-    #if (PLATFORM_IOS || PLATFORM_TVOS || PLATFORM_VISIONOS) && !(TARGET_IPHONE_SIMULATOR || TARGET_TVOS_SIMULATOR)
-        const int targetFPS = UnityGetTargetFPS(); assert(targetFPS > 0);
-        [UnityCurrentMTLCommandBuffer() presentDrawable: surface->drawable afterMinimumDuration: 1.0 / targetFPS];
-        return;
-    #endif
+        id<CAMetalDrawable> drawable = surface->drawable;
 
-        // note that we end up here if presentDrawable: afterMinimumDuration: is not supported
-        [UnityCurrentMTLCommandBuffer() presentDrawable: surface->drawable];
+        [UnityCurrentMTLCommandBuffer() addScheduledHandler:^(id<MTLCommandBuffer> commandBuffer) {
+            [drawable present];
+        }];
     }
+    surface->calledPresentDrawable = 1;
 }
 
 extern "C" MTLTextureRef AcquireDrawableMTL(UnityDisplaySurfaceMTL* surface)
@@ -412,6 +433,9 @@ extern "C" void EndFrameRenderingMTL(UnityDisplaySurfaceMTL* surface)
 #if PLATFORM_OSX
     @synchronized(surface->layer)
     {
+        if (!surface->calledPresentDrawable)
+            return;
+        surface->calledPresentDrawable = 0;
         std::swap(surface->drawableProxyRT[0], surface->drawableProxyRT[1]);
         std::swap(surface->drawableProxyRS[0], surface->drawableProxyRS[1]);
         surface->proxySwaps++;

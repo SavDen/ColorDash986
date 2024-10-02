@@ -1213,7 +1213,7 @@ IL_00d3:
 		uint32_t* L_40 = V_2;
 		uint32_t* L_41 = L_40;
 		V_2 = ((uint32_t*)il2cpp_codegen_add((intptr_t)L_41, 4));
-		int32_t L_42 = *((uint32_t*)L_41);
+		int32_t L_42 = (*(L_41));
 		V_1 = ((int32_t)il2cpp_codegen_add((int32_t)L_39, ((int32_t)il2cpp_codegen_multiply(L_42, ((int32_t)-1028477379)))));
 		uint32_t L_43 = V_1;
 		uint32_t L_44;
@@ -1245,7 +1245,7 @@ IL_0107:
 		uint8_t* L_50 = V_3;
 		uint8_t* L_51 = L_50;
 		V_3 = ((uint8_t*)il2cpp_codegen_add((intptr_t)L_51, 1));
-		int32_t L_52 = *((uint8_t*)L_51);
+		int32_t L_52 = (*(L_51));
 		V_1 = ((int32_t)il2cpp_codegen_add((int32_t)L_49, ((int32_t)il2cpp_codegen_multiply(L_52, ((int32_t)374761393)))));
 		uint32_t L_53 = V_1;
 		uint32_t L_54;

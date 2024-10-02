@@ -43,6 +43,7 @@ struct Action_2_t4E94B0FCA1084D7868DB11A50767A4916CA3D3FB;
 struct Action_2_t8EADE87044ADE97906736D729EA2E3EF97F34F3D;
 struct List_1_tC0F62C6753434D94B7A8CFEB0E642E533349DD30;
 struct List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D;
+struct AchievementU5BU5D_tED830B37019AED404F90055C55FB9C9877735612;
 struct AchievementDescriptionU5BU5D_t6B3ED222FB06DD89115602C955A2CD98E000CCC5;
 struct CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB;
 struct DelegateU5BU5D_tC5AB7E8F745616680F337909D3A8E6C722CDF771;
@@ -55,6 +56,7 @@ struct IScoreU5BU5D_t72B1FC43A0166FFFA30AF4E10BCA837E34A6B042;
 struct IUserProfileU5BU5D_t0179D2FF9BD9F78A4E0A10AE350DC1F19E5FCB43;
 struct Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C;
 struct ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918;
+struct ScoreU5BU5D_tA28C0ADDF2AA24B073A82D85601CC0DEF6B491F2;
 struct StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248;
 struct UserProfileU5BU5D_tCE4194A0D6665FFF7943DDC3B0B9301D57F84A6A;
 struct Achievement_t723EE724DCEBFAE9555CDC909FDA84F71EB5719B;
@@ -105,6 +107,9 @@ IL2CPP_EXTERN_C RuntimeClass* UserProfileU5BU5D_tCE4194A0D6665FFF7943DDC3B0B9301
 IL2CPP_EXTERN_C RuntimeClass* UserProfile_t3EF35349E23201EF9F3C5956C44384FA45C1EF29_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* UserScope_tD27617E6435462ACDBA346FC900FA351797D09E0_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* UserState_t4C54A6F5CE00515F37F91DFB88AEB8FC56C6934C_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeField* GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086____m_Image_FieldInfo_var;
+IL2CPP_EXTERN_C RuntimeField* GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D____m_GenericLeaderboard_FieldInfo_var;
+IL2CPP_EXTERN_C RuntimeField* GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535____image_FieldInfo_var;
 IL2CPP_EXTERN_C String_t* _stringLiteral023C61CBC6B5B20519E94C2D7DF0CAE83164CB4A;
 IL2CPP_EXTERN_C String_t* _stringLiteral0EB9CEC404FAEC84F4591C2F0DAF1F030A3878B0;
 IL2CPP_EXTERN_C String_t* _stringLiteral1273820123770263EB0C9B1F3C361D88BB39757C;
@@ -140,6 +145,9 @@ IL2CPP_EXTERN_C const RuntimeMethod* List_1_Add_mCA3DB2EFCC889D9C7267FBA2E292AC5
 IL2CPP_EXTERN_C const RuntimeMethod* List_1_GetEnumerator_mE5236B316CC097373903CF5BBD4BDB5EC818493C_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* List_1__ctor_m5CC4EDCF787094C31DECA9B3401859DA94CC81BA_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec__DisplayClass21_0_U3CUnityEngine_SocialPlatforms_ISocialPlatform_AuthenticateU3Eb__0_m9AE0F3B20150C0C9F14CCAEF54A67A6E8F47E04A_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeType* GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_0_0_0_var;
+IL2CPP_EXTERN_C const RuntimeType* GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_0_0_0_var;
+IL2CPP_EXTERN_C const RuntimeType* GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_0_0_0_var;
 struct Delegate_t_marshaled_com;
 struct Delegate_t_marshaled_pinvoke;
 
@@ -198,16 +206,6 @@ struct String_t  : public RuntimeObject
 {
 	int32_t ____stringLength;
 	Il2CppChar ____firstChar;
-};
-struct UserProfile_t3EF35349E23201EF9F3C5956C44384FA45C1EF29  : public RuntimeObject
-{
-	String_t* ___m_UserName;
-	String_t* ___m_ID;
-	String_t* ___m_legacyID;
-	bool ___m_IsFriend;
-	int32_t ___m_State;
-	Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* ___m_Image;
-	String_t* ___m_gameID;
 };
 struct ValueType_t6D9B272BD21782F0A9A14F2E41F85A50E97A986F  : public RuntimeObject
 {
@@ -377,12 +375,6 @@ struct IntPtr_t
 {
 	void* ___m_value;
 };
-struct LocalUser_t55C68E98993F86B6FBB7A25F28EB989CD7E6A3AD  : public UserProfile_t3EF35349E23201EF9F3C5956C44384FA45C1EF29
-{
-	IUserProfileU5BU5D_t0179D2FF9BD9F78A4E0A10AE350DC1F19E5FCB43* ___m_Friends;
-	bool ___m_Authenticated;
-	bool ___m_Underage;
-};
 struct Range_tDDBAD7CBDC5DD273DA4330F4E9CDF24C62F16ED6 
 {
 	int32_t ___from;
@@ -473,19 +465,6 @@ struct GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_marshaled_com
 	intptr_t ___m_InternalLeaderboard;
 	Leaderboard_tBDB34CC6F79318BE6D7761015C70C8A5CC64EC71* ___m_GenericLeaderboard;
 };
-struct Leaderboard_tBDB34CC6F79318BE6D7761015C70C8A5CC64EC71  : public RuntimeObject
-{
-	bool ___m_Loading;
-	RuntimeObject* ___m_LocalUserScore;
-	uint32_t ___m_MaxRange;
-	IScoreU5BU5D_t72B1FC43A0166FFFA30AF4E10BCA837E34A6B042* ___m_Scores;
-	String_t* ___m_Title;
-	StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* ___m_UserIDs;
-	String_t* ___U3CidU3Ek__BackingField;
-	int32_t ___U3CuserScopeU3Ek__BackingField;
-	Range_tDDBAD7CBDC5DD273DA4330F4E9CDF24C62F16ED6 ___U3CrangeU3Ek__BackingField;
-	int32_t ___U3CtimeScopeU3Ek__BackingField;
-};
 struct Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C  : public RuntimeObject
 {
 	intptr_t ___m_CachedPtr;
@@ -507,6 +486,31 @@ struct Score_t9ED78BAAA0A342F85A3473CCF95CE31E6BF03D53  : public RuntimeObject
 	String_t* ___U3CleaderboardIDU3Ek__BackingField;
 	int64_t ___U3CvalueU3Ek__BackingField;
 };
+struct TimeScope_t20CB388177E885D6B11816946D623907E276F08E 
+{
+	int32_t ___value__;
+};
+struct UserScope_tD27617E6435462ACDBA346FC900FA351797D09E0 
+{
+	int32_t ___value__;
+};
+struct UserState_t4C54A6F5CE00515F37F91DFB88AEB8FC56C6934C 
+{
+	int32_t ___value__;
+};
+struct Leaderboard_tBDB34CC6F79318BE6D7761015C70C8A5CC64EC71  : public RuntimeObject
+{
+	bool ___m_Loading;
+	RuntimeObject* ___m_LocalUserScore;
+	uint32_t ___m_MaxRange;
+	IScoreU5BU5D_t72B1FC43A0166FFFA30AF4E10BCA837E34A6B042* ___m_Scores;
+	String_t* ___m_Title;
+	StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* ___m_UserIDs;
+	String_t* ___U3CidU3Ek__BackingField;
+	int32_t ___U3CuserScopeU3Ek__BackingField;
+	Range_tDDBAD7CBDC5DD273DA4330F4E9CDF24C62F16ED6 ___U3CrangeU3Ek__BackingField;
+	int32_t ___U3CtimeScopeU3Ek__BackingField;
+};
 struct MulticastDelegate_t  : public Delegate_t
 {
 	DelegateU5BU5D_tC5AB7E8F745616680F337909D3A8E6C722CDF771* ___delegates;
@@ -521,6 +525,16 @@ struct MulticastDelegate_t_marshaled_com : public Delegate_t_marshaled_com
 };
 struct Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700  : public Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C
 {
+};
+struct UserProfile_t3EF35349E23201EF9F3C5956C44384FA45C1EF29  : public RuntimeObject
+{
+	String_t* ___m_UserName;
+	String_t* ___m_ID;
+	String_t* ___m_legacyID;
+	bool ___m_IsFriend;
+	int32_t ___m_State;
+	Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* ___m_Image;
+	String_t* ___m_gameID;
 };
 struct Action_1_t4AB51E58A5F757E5EB04E408FD37B7BE6D34B0B5  : public MulticastDelegate_t
 {
@@ -545,6 +559,12 @@ struct Action_2_t4E94B0FCA1084D7868DB11A50767A4916CA3D3FB  : public MulticastDel
 };
 struct Action_2_t8EADE87044ADE97906736D729EA2E3EF97F34F3D  : public MulticastDelegate_t
 {
+};
+struct LocalUser_t55C68E98993F86B6FBB7A25F28EB989CD7E6A3AD  : public UserProfile_t3EF35349E23201EF9F3C5956C44384FA45C1EF29
+{
+	IUserProfileU5BU5D_t0179D2FF9BD9F78A4E0A10AE350DC1F19E5FCB43* ___m_Friends;
+	bool ___m_Authenticated;
+	bool ___m_Underage;
 };
 struct Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4  : public Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700
 {
@@ -1195,6 +1215,30 @@ inline void List_1_AddWithResize_m79A9BF770BEF9C06BE40D5401E55E375F2726CC4 (List
 {
 	((  void (*) (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D*, RuntimeObject*, const RuntimeMethod*))List_1_AddWithResize_m79A9BF770BEF9C06BE40D5401E55E375F2726CC4_gshared)(__this, ___0_item, method);
 }
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 #ifdef __clang__
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
@@ -2421,12 +2465,26 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Leaderboard_set_timeScope_m3248C6661CA59
 #endif
 IL2CPP_EXTERN_C void GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_marshal_pinvoke(const GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535& unmarshaled, GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_marshaled_pinvoke& marshaled)
 {
-	Exception_t* ___imageException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field 'image' of type 'GcUserProfileData': Reference type field marshaling is not supported.");
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_0_0_0_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535____image_FieldInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t* ___imageException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field '%s' of type '%s': Reference type field marshaling is not supported.", GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535____image_FieldInfo_var, GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_0_0_0_var);
 	IL2CPP_RAISE_MANAGED_EXCEPTION(___imageException, NULL);
 }
 IL2CPP_EXTERN_C void GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_marshal_pinvoke_back(const GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_marshaled_pinvoke& marshaled, GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535& unmarshaled)
 {
-	Exception_t* ___imageException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field 'image' of type 'GcUserProfileData': Reference type field marshaling is not supported.");
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_0_0_0_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535____image_FieldInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t* ___imageException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field '%s' of type '%s': Reference type field marshaling is not supported.", GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535____image_FieldInfo_var, GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_0_0_0_var);
 	IL2CPP_RAISE_MANAGED_EXCEPTION(___imageException, NULL);
 }
 IL2CPP_EXTERN_C void GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_marshal_pinvoke_cleanup(GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_marshaled_pinvoke& marshaled)
@@ -2434,12 +2492,26 @@ IL2CPP_EXTERN_C void GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535
 }
 IL2CPP_EXTERN_C void GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_marshal_com(const GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535& unmarshaled, GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_marshaled_com& marshaled)
 {
-	Exception_t* ___imageException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field 'image' of type 'GcUserProfileData': Reference type field marshaling is not supported.");
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_0_0_0_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535____image_FieldInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t* ___imageException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field '%s' of type '%s': Reference type field marshaling is not supported.", GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535____image_FieldInfo_var, GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_0_0_0_var);
 	IL2CPP_RAISE_MANAGED_EXCEPTION(___imageException, NULL);
 }
 IL2CPP_EXTERN_C void GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_marshal_com_back(const GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_marshaled_com& marshaled, GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535& unmarshaled)
 {
-	Exception_t* ___imageException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field 'image' of type 'GcUserProfileData': Reference type field marshaling is not supported.");
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_0_0_0_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535____image_FieldInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t* ___imageException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field '%s' of type '%s': Reference type field marshaling is not supported.", GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535____image_FieldInfo_var, GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_0_0_0_var);
 	IL2CPP_RAISE_MANAGED_EXCEPTION(___imageException, NULL);
 }
 IL2CPP_EXTERN_C void GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_marshal_com_cleanup(GcUserProfileData_tCDEF4010D44CB370077CE47055C89CD9E808A535_marshaled_com& marshaled)
@@ -2601,12 +2673,26 @@ IL2CPP_EXTERN_C  void GcUserProfileData_AddToArray_m9CC6C97BD081C9EC250AAA5E9BDC
 #endif
 IL2CPP_EXTERN_C void GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_marshal_pinvoke(const GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086& unmarshaled, GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_marshaled_pinvoke& marshaled)
 {
-	Exception_t* ___m_ImageException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field 'm_Image' of type 'GcAchievementDescriptionData': Reference type field marshaling is not supported.");
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_0_0_0_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086____m_Image_FieldInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t* ___m_ImageException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field '%s' of type '%s': Reference type field marshaling is not supported.", GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086____m_Image_FieldInfo_var, GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_0_0_0_var);
 	IL2CPP_RAISE_MANAGED_EXCEPTION(___m_ImageException, NULL);
 }
 IL2CPP_EXTERN_C void GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_marshal_pinvoke_back(const GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_marshaled_pinvoke& marshaled, GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086& unmarshaled)
 {
-	Exception_t* ___m_ImageException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field 'm_Image' of type 'GcAchievementDescriptionData': Reference type field marshaling is not supported.");
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_0_0_0_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086____m_Image_FieldInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t* ___m_ImageException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field '%s' of type '%s': Reference type field marshaling is not supported.", GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086____m_Image_FieldInfo_var, GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_0_0_0_var);
 	IL2CPP_RAISE_MANAGED_EXCEPTION(___m_ImageException, NULL);
 }
 IL2CPP_EXTERN_C void GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_marshal_pinvoke_cleanup(GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_marshaled_pinvoke& marshaled)
@@ -2614,12 +2700,26 @@ IL2CPP_EXTERN_C void GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE7
 }
 IL2CPP_EXTERN_C void GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_marshal_com(const GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086& unmarshaled, GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_marshaled_com& marshaled)
 {
-	Exception_t* ___m_ImageException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field 'm_Image' of type 'GcAchievementDescriptionData': Reference type field marshaling is not supported.");
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_0_0_0_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086____m_Image_FieldInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t* ___m_ImageException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field '%s' of type '%s': Reference type field marshaling is not supported.", GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086____m_Image_FieldInfo_var, GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_0_0_0_var);
 	IL2CPP_RAISE_MANAGED_EXCEPTION(___m_ImageException, NULL);
 }
 IL2CPP_EXTERN_C void GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_marshal_com_back(const GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_marshaled_com& marshaled, GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086& unmarshaled)
 {
-	Exception_t* ___m_ImageException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field 'm_Image' of type 'GcAchievementDescriptionData': Reference type field marshaling is not supported.");
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_0_0_0_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086____m_Image_FieldInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t* ___m_ImageException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field '%s' of type '%s': Reference type field marshaling is not supported.", GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086____m_Image_FieldInfo_var, GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_0_0_0_var);
 	IL2CPP_RAISE_MANAGED_EXCEPTION(___m_ImageException, NULL);
 }
 IL2CPP_EXTERN_C void GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_marshal_com_cleanup(GcAchievementDescriptionData_t9C5BBAB764F0088FE40698EB33FE79D5173B2086_marshaled_com& marshaled)
@@ -5211,12 +5311,26 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass21_0_U3CUnityEngine
 #endif
 IL2CPP_EXTERN_C void GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_marshal_pinvoke(const GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D& unmarshaled, GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_marshaled_pinvoke& marshaled)
 {
-	Exception_t* ___m_GenericLeaderboardException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field 'm_GenericLeaderboard' of type 'GcLeaderboard': Reference type field marshaling is not supported.");
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_0_0_0_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D____m_GenericLeaderboard_FieldInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t* ___m_GenericLeaderboardException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field '%s' of type '%s': Reference type field marshaling is not supported.", GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D____m_GenericLeaderboard_FieldInfo_var, GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_0_0_0_var);
 	IL2CPP_RAISE_MANAGED_EXCEPTION(___m_GenericLeaderboardException, NULL);
 }
 IL2CPP_EXTERN_C void GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_marshal_pinvoke_back(const GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_marshaled_pinvoke& marshaled, GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D& unmarshaled)
 {
-	Exception_t* ___m_GenericLeaderboardException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field 'm_GenericLeaderboard' of type 'GcLeaderboard': Reference type field marshaling is not supported.");
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_0_0_0_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D____m_GenericLeaderboard_FieldInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t* ___m_GenericLeaderboardException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field '%s' of type '%s': Reference type field marshaling is not supported.", GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D____m_GenericLeaderboard_FieldInfo_var, GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_0_0_0_var);
 	IL2CPP_RAISE_MANAGED_EXCEPTION(___m_GenericLeaderboardException, NULL);
 }
 IL2CPP_EXTERN_C void GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_marshal_pinvoke_cleanup(GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_marshaled_pinvoke& marshaled)
@@ -5224,12 +5338,26 @@ IL2CPP_EXTERN_C void GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_mar
 }
 IL2CPP_EXTERN_C void GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_marshal_com(const GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D& unmarshaled, GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_marshaled_com& marshaled)
 {
-	Exception_t* ___m_GenericLeaderboardException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field 'm_GenericLeaderboard' of type 'GcLeaderboard': Reference type field marshaling is not supported.");
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_0_0_0_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D____m_GenericLeaderboard_FieldInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t* ___m_GenericLeaderboardException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field '%s' of type '%s': Reference type field marshaling is not supported.", GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D____m_GenericLeaderboard_FieldInfo_var, GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_0_0_0_var);
 	IL2CPP_RAISE_MANAGED_EXCEPTION(___m_GenericLeaderboardException, NULL);
 }
 IL2CPP_EXTERN_C void GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_marshal_com_back(const GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_marshaled_com& marshaled, GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D& unmarshaled)
 {
-	Exception_t* ___m_GenericLeaderboardException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field 'm_GenericLeaderboard' of type 'GcLeaderboard': Reference type field marshaling is not supported.");
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_0_0_0_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D____m_GenericLeaderboard_FieldInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t* ___m_GenericLeaderboardException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field '%s' of type '%s': Reference type field marshaling is not supported.", GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D____m_GenericLeaderboard_FieldInfo_var, GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_0_0_0_var);
 	IL2CPP_RAISE_MANAGED_EXCEPTION(___m_GenericLeaderboardException, NULL);
 }
 IL2CPP_EXTERN_C void GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_marshal_com_cleanup(GcLeaderboard_t4C8666E37C725723182101E6F36DFAB20D581E9D_marshaled_com& marshaled)

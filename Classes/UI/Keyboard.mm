@@ -359,6 +359,7 @@ extern "C" void UnityKeyboard_LayoutChanged(NSString* layout);
 #endif
 
         [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(textInputDone:) name: UITextFieldTextDidEndEditingNotification object: nil];
+        [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(textInputDone:) name: UITextViewTextDidEndEditingNotification object: nil];
     }
 
     return self;
@@ -485,6 +486,13 @@ extern "C" void UnityKeyboard_LayoutChanged(NSString* layout);
 
         [UnityGetGLView() addSubview: editView];
         [inputView becomeFirstResponder];
+
+#if PLATFORM_TVOS
+        // make keyboard usable via controller by allowing exit to home temporarily
+        // val 3, as second lowest bit indicates a temporary disable
+        if (UnityGetAppleTVRemoteAllowExitToMenu() == 0)
+            UnitySetAppleTVRemoteAllowExitToMenu(3);
+#endif
     }
 
     // we need to reload input views when switching the keyboard type for already active keyboard
@@ -508,7 +516,11 @@ extern "C" void UnityKeyboard_LayoutChanged(NSString* layout);
     // Keyboard notifications are not supported on tvOS so keyboardWillHide: will never be called which would set _active to false.
     // To work around that limitation we will update _active from here.
     #if PLATFORM_TVOS
+    BOOL wasActive = _active;
     _active = editView.isFirstResponder;
+    // if closing, restore exit value to what it was (getter ignores temp value and returns what it is meant to be)
+    if (!_active && wasActive)
+        UnitySetAppleTVRemoteAllowExitToMenu(UnityGetAppleTVRemoteAllowExitToMenu());
     #endif
 }
 
@@ -714,6 +726,11 @@ extern "C" void UnityKeyboard_LayoutChanged(NSString* layout);
         return [NSClassFromString(@"GCKeyboard") valueForKey: @"coalescedKeyboard"] != nil;
     else // The minimum height a software keyboard will be on iOS is 160, A bluetooth keyboard just uses a toolbar which will be smaller than this.
         return _heightOfKeyboard < 160.0f;
+}
+
+- (UITextField*)getTextField
+{
+    return textField;
 }
 
 static bool StringContainsEmoji(NSString *string);

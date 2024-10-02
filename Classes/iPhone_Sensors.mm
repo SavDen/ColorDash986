@@ -25,6 +25,7 @@ static NSArray* QueryControllerCollection();
 static bool gTVRemoteTouchesEnabled = true;
 static bool gTVRemoteAllowRotationInitialValue = false;
 static bool gTVRemoteReportsAbsoluteDpadValuesInitialValue = false;
+static int gTVControllerUserInteractionEnabled = 0;
 #endif
 
 static bool gCompensateSensors = true;
@@ -696,7 +697,6 @@ static NSString* FormatJoystickIdentifier(int idx, const char* typeString, const
 
 NSString* GetJoystickName(GCController* controller, int idx)
 {
-    NSString* joystickName;
     if (controller != nil)
     {
         // iOS 8 has bug, which is encountered when controller is being attached
@@ -709,19 +709,10 @@ NSString* GetJoystickName(GCController* controller, int idx)
             attached = (controller.attachedToDevice ? "wired" : "wireless");
 
         const char* typeString = [controller extendedGamepad] != nil ? "extended" : "basic";
-        joystickName = FormatJoystickIdentifier(idx, typeString, attached, [[controller vendorName] UTF8String]);
+        return FormatJoystickIdentifier(idx, typeString, attached, [[controller vendorName] UTF8String]);
     }
-    else
-    {
-#if UNITY_TVOS_SIMULATOR_FAKE_REMOTE
-        if (idx == [QueryControllerCollection() count])
-        {
-            joystickName = FormatJoystickIdentifier(idx, "basic", "wireless", "Unity");
-        }
-#endif
-        joystickName = @"unknown";
-    }
-    return joystickName;
+    
+    return @"unknown";
 }
 
 extern "C" NSArray* UnityGetJoystickNames()
@@ -729,16 +720,17 @@ extern "C" NSArray* UnityGetJoystickNames()
     NSArray* joysticks = QueryControllerCollection();
     int count = joysticks != nil ? (int)[joysticks count] : 0;
 
-    #if UNITY_TVOS_SIMULATOR_FAKE_REMOTE
-    count++;
-    #endif
-
     NSMutableArray * joystickNames = [NSMutableArray arrayWithCapacity: count];
 
     for (int i = 0; i < count; i++)
     {
         [joystickNames addObject: GetJoystickName(joysticks[i], i)];
     }
+    
+#if UNITY_TVOS_SIMULATOR_FAKE_REMOTE
+    [joystickNames addObject: FormatJoystickIdentifier(count, "basic", "wireless", "Unity")];
+#endif
+    
     return joystickNames;
 }
 
@@ -1017,14 +1009,36 @@ extern "C" void UnitySetAppleTVRemoteTouchesEnabled(int val)
     gTVRemoteTouchesEnabled = val;
 }
 
+/*
+    TVRemoteAllowExitToMenu.
+    Lowest bit caches the value of .controllerUserInteractionEnabled.
+    Second lowest bit is set if .controllerUserInteractionEnabled is temporarily changed for internal purposes.
+*/
 extern "C" int UnityGetAppleTVRemoteAllowExitToMenu()
 {
+    if (gTVControllerUserInteractionEnabled & 2)
+        return gTVControllerUserInteractionEnabled & 1;
     return ((GCEventViewController*)UnityGetGLViewController()).controllerUserInteractionEnabled;
 }
 
+/*
+    Same as getter above, except that second lowest bit here indicates fake setting,
+    meaning we set the value on controller, but cache the true value so getter report no changes.
+*/
 extern "C" void UnitySetAppleTVRemoteAllowExitToMenu(int val)
 {
-    ((GCEventViewController*)UnityGetGLViewController()).controllerUserInteractionEnabled = val;
+    bool newVal = val & 1;
+    if (val & 2)
+    {
+        if (gTVControllerUserInteractionEnabled == val)
+            return;
+        if (0 == (gTVControllerUserInteractionEnabled & 2))
+        {
+            int cacheVal = ((GCEventViewController*)UnityGetGLViewController()).controllerUserInteractionEnabled;
+            gTVControllerUserInteractionEnabled = 2 | cacheVal;
+        }
+    }
+    ((GCEventViewController*)UnityGetGLViewController()).controllerUserInteractionEnabled = newVal;
 }
 
 extern "C" int UnityGetAppleTVRemoteAllowRotation()

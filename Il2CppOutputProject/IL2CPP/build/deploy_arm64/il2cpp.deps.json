@@ -14,7 +14,6 @@
           "Unity.IL2CPP.Api": "1.0.0",
           "Unity.IL2CPP.Bee.BuildLogic.Android": "1.0.0",
           "Unity.IL2CPP.Bee.BuildLogic.AppleTV": "1.0.0",
-          "Unity.IL2CPP.Bee.BuildLogic.Bratwurst": "1.0.0",
           "Unity.IL2CPP.Bee.BuildLogic.EmbeddedLinux": "1.0.0",
           "Unity.IL2CPP.Bee.BuildLogic.Linux": "1.0.0",
           "Unity.IL2CPP.Bee.BuildLogic.MacOSX": "1.0.0",
@@ -858,15 +857,6 @@
           "Unity.IL2CPP.Bee.BuildLogic.AppleTV.dll": {}
         }
       },
-      "Unity.IL2CPP.Bee.BuildLogic.Bratwurst/1.0.0": {
-        "dependencies": {
-          "Unity.IL2CPP.Bee.BuildLogic": "1.0.0",
-          "Unity.IL2CPP.Bee.BuildLogic.iOS": "1.0.0"
-        },
-        "runtime": {
-          "Unity.IL2CPP.Bee.BuildLogic.Bratwurst.dll": {}
-        }
-      },
       "Unity.IL2CPP.Bee.BuildLogic.EmbeddedLinux/1.0.0": {
         "dependencies": {
           "Unity.IL2CPP.Bee.BuildLogic": "1.0.0"
@@ -1148,14 +1138,6 @@
           }
         }
       },
-      "Bee.Toolchain.Bratwurst/0.0.0.0": {
-        "runtime": {
-          "Bee.Toolchain.Bratwurst.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
       "Bee.Toolchain.VisionOS/0.0.0.0": {
         "runtime": {
           "Bee.Toolchain.VisionOS.dll": {
@@ -1366,11 +1348,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Unity.IL2CPP.Bee.BuildLogic.Bratwurst/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "Unity.IL2CPP.Bee.BuildLogic.EmbeddedLinux/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -1537,11 +1514,6 @@
       "sha512": ""
     },
     "Bee.Toolchain.IOS/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Bee.Toolchain.Bratwurst/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

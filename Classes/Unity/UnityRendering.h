@@ -123,6 +123,8 @@ int                                 drawableProxyNeedsClear[kUnityNumOffscreenSu
 // This is used on a Mac with drawableProxyRT when off-screen rendering is used
 int                                 proxySwaps;         // Counts times proxy RTs have swapped since surface recreated
 int                                 proxyReady;         // [bool] Proxy RT has swapped since last present; frame ended
+int                                 calledPresentDrawable; // Tracks presenting for editor.
+int                                 vsync;              // Is vsync enabled or not
 
 OBJC_OBJECT_PTR MTLTextureRef       drawableTex;
 OBJC_OBJECT_PTR MTLTextureRef       systemColorRB;

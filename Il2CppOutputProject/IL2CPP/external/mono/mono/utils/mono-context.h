@@ -48,7 +48,12 @@ typedef __m128d MonoContextSimdReg;
 #endif
 #elif defined(TARGET_ARM64)
 #define MONO_HAVE_SIMD_REG
+#if defined(HOST_WIN32)
+#include <arm_neon.h>
+typedef float32x4_t MonoContextSimdReg;
+#else
 typedef __uint128_t MonoContextSimdReg;
+#endif // HOST_WIN32
 #endif
 
 /*

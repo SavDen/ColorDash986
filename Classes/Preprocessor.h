@@ -35,12 +35,11 @@
 //------------------------------------------------------------------------------
 //
 // defines for target platform
-// Note: visionOS defines _OS_XR and _OS_IOS
 //
 
 #define UNITY_TRAMPOLINE_IN_USE 1
 
-#if defined(TARGET_OS_XR) && TARGET_OS_XR
+#if defined(TARGET_OS_VISION) && TARGET_OS_VISION
 #define PLATFORM_IOS 1
     #define PLATFORM_OSX    0
 #define PLATFORM_TVOS 0
@@ -61,7 +60,7 @@
 #define PLATFORM_TVOS 0
 #define PLATFORM_VISIONOS 0
 #else
-    #error one of TARGET_OS_IOS, TARGET_OS_OSX, TARGET_OS_TV (add visionos code here) should be defined
+    #error one of TARGET_OS_IOS, TARGET_OS_OSX, TARGET_OS_TV, TARGET_OS_VISION should be defined
 #endif
 
 
