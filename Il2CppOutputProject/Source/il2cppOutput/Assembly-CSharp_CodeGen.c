@@ -120,6 +120,7 @@ extern void SpawnerHard_AddCollectionBall_mA85E8E30B83EC37D308B0B9DBFD3A807DE186
 extern void SpawnerHard_RemoveCollectionBall_m742585B04E5F0858BC8C1BD2E65B48195115E909 (void);
 extern void SpawnerHard_ChangeBalls_m0169B5FDFB3EA32CA19AD02D77E1965AC5374F41 (void);
 extern void SpawnerHard_ChangeAllBall_mE12848A4E1C9102B1236448A612699B0262A336C (void);
+extern void SpawnerHard_NameBall_m4F5AF6CC5B3FE893AD2B747A2E409DDA5A009D09 (void);
 extern void SpawnerHard__ctor_m1A3864647EA0EA5F4E47868DF0094DD7FF042758 (void);
 extern void U3CChangeBallsU3Ed__10__ctor_m5878C7CB1B91BD3AE76555A513FC35B0D00FAE7D (void);
 extern void U3CChangeBallsU3Ed__10_System_IDisposable_Dispose_m462F9DE4EEE8FD35BD5D53166304DF2D9D4746A9 (void);
@@ -174,7 +175,7 @@ extern void U3CShareScreenshotInAnroidU3Ed__8_MoveNext_m6FE014E501E60B309889EBA0
 extern void U3CShareScreenshotInAnroidU3Ed__8_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mDFC3CF837529F15E8498FCAE7403F231B8CADFA6 (void);
 extern void U3CShareScreenshotInAnroidU3Ed__8_System_Collections_IEnumerator_get_Current_mE940EB90523F748F81FDAC61357D918EC62FCB77 (void);
 extern void ShareScreen__ctor_mBB8A46884DC4DCB1487DB3FFAF72C290CCB29704 (void);
-static Il2CppMethodPointer s_methodPointers[162] = 
+static Il2CppMethodPointer s_methodPointers[163] = 
 {
 	AudioPause_Start_m6FF9A5CAB33D736D0330D9373632B4E0B19F4C9E,
 	AudioPause_MusisButton_m98D02CEBB68CEB42F1A1C7F3B994D7DDFC4337B1,
@@ -284,6 +285,7 @@ static Il2CppMethodPointer s_methodPointers[162] =
 	SpawnerHard_RemoveCollectionBall_m742585B04E5F0858BC8C1BD2E65B48195115E909,
 	SpawnerHard_ChangeBalls_m0169B5FDFB3EA32CA19AD02D77E1965AC5374F41,
 	SpawnerHard_ChangeAllBall_mE12848A4E1C9102B1236448A612699B0262A336C,
+	SpawnerHard_NameBall_m4F5AF6CC5B3FE893AD2B747A2E409DDA5A009D09,
 	SpawnerHard__ctor_m1A3864647EA0EA5F4E47868DF0094DD7FF042758,
 	U3CChangeBallsU3Ed__10__ctor_m5878C7CB1B91BD3AE76555A513FC35B0D00FAE7D,
 	U3CChangeBallsU3Ed__10_System_IDisposable_Dispose_m462F9DE4EEE8FD35BD5D53166304DF2D9D4746A9,
@@ -339,7 +341,7 @@ static Il2CppMethodPointer s_methodPointers[162] =
 	U3CShareScreenshotInAnroidU3Ed__8_System_Collections_IEnumerator_get_Current_mE940EB90523F748F81FDAC61357D918EC62FCB77,
 	ShareScreen__ctor_mBB8A46884DC4DCB1487DB3FFAF72C290CCB29704,
 };
-static const int32_t s_InvokerIndices[162] = 
+static const int32_t s_InvokerIndices[163] = 
 {
 	4345,
 	4345,
@@ -449,6 +451,7 @@ static const int32_t s_InvokerIndices[162] =
 	3534,
 	4255,
 	4345,
+	3005,
 	4345,
 	3511,
 	4345,
@@ -508,7 +511,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	162,
+	163,
 	s_methodPointers,
 	0,
 	NULL,
